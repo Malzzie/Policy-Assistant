@@ -1,0 +1,8 @@
+flask
+pytest
+beautifulsoup4
+pypdf
+chromadb
+sentence-transformers
+openai
+torch

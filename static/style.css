@@ -1,0 +1,261 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f7fb;
+    color: #1f2937;
+}
+
+.app-shell {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 16px 40px;
+}
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.app-header h1 {
+    margin: 0 0 8px;
+    font-size: 2rem;
+}
+
+.app-header p {
+    margin: 0;
+    color: #52606d;
+}
+
+.health-pill {
+    background: #e8f1ff;
+    color: #1d4ed8;
+    border: 1px solid #bfd3ff;
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.main-layout {
+    display: block;
+}
+
+.chat-panel {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+}
+
+.chat-history {
+    min-height: 500px;
+    max-height: 65vh;
+    overflow-y: auto;
+    padding: 24px;
+    background: linear-gradient(to bottom, #fbfdff, #f8fbff);
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: #52606d;
+}
+
+.empty-state h2 {
+    margin-top: 0;
+    color: #1f2937;
+}
+
+.message-block + .message-block {
+    margin-top: 24px;
+}
+
+.message {
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 10px;
+}
+
+.user-message {
+    background: #dbeafe;
+    border: 1px solid #bfdbfe;
+    margin-left: 10%;
+}
+
+.assistant-message {
+    background: #f8fafc;
+    border: 1px solid #dbe5ef;
+    margin-right: 10%;
+}
+
+.message-label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #334155;
+}
+
+.message-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+}
+
+.meta-info {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.mode-badge,
+.latency-badge {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    background: #e5eef9;
+    color: #1e3a8a;
+}
+
+.message-text {
+    white-space: pre-wrap;
+    line-height: 1.65;
+    color: #1f2937;
+}
+
+.citations-section {
+    margin-top: 18px;
+}
+
+.citations-section h3 {
+    margin-bottom: 10px;
+    font-size: 1rem;
+}
+
+.citations-list {
+    display: grid;
+    gap: 12px;
+}
+
+.citation-card {
+    border: 1px solid #d9e2ec;
+    border-radius: 10px;
+    padding: 14px;
+    background: #ffffff;
+}
+
+.citation-card h4 {
+    margin: 0 0 10px;
+    color: #1e3a8a;
+}
+
+.citation-card p {
+    margin: 6px 0;
+    line-height: 1.5;
+}
+
+.no-citations {
+    color: #6b7280;
+    font-style: italic;
+}
+
+.error-box {
+    margin-top: 16px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #b91c1c;
+}
+
+.chat-form {
+    border-top: 1px solid #e5e7eb;
+    padding: 18px;
+    background: #ffffff;
+}
+
+textarea {
+    width: 100%;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    padding: 14px;
+    font-size: 1rem;
+    line-height: 1.5;
+    resize: vertical;
+    min-height: 90px;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.form-actions {
+    margin-top: 12px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+button {
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 18px;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+button:disabled {
+    background: #94a3b8;
+    cursor: not-allowed;
+}
+
+.hidden {
+    display: none;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (max-width: 768px) {
+    .app-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .user-message,
+    .assistant-message {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .chat-history {
+        padding: 16px;
+    }
+}

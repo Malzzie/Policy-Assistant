@@ -1,0 +1,32 @@
+question,topic,mode,latency_seconds
+How many PTO days can employees carry over?,PTO,fallback,4.1075
+Who is eligible for PTO?,PTO,fallback,2.2459
+How much PTO do employees with 0 to 2 years of service receive annually?,PTO,fallback,3.1848
+How much PTO do employees with 3 to 5 years of service receive annually?,PTO,fallback,2.3887
+How much PTO do employees with more than 5 years of service receive annually?,PTO,fallback,2.5305
+How far in advance should PTO requests normally be submitted?,PTO,fallback,2.3627
+Who is eligible to work remotely?,Remote Work,fallback,2.3745
+What are the core hours for remote employees?,Remote Work,fallback,2.8678
+Are weekly team meetings required for remote workers?,Remote Work,fallback,2.4137
+What security requirement applies to remote work internet access?,Remote Work,fallback,2.5054
+What types of expenses are eligible for reimbursement?,Expense,fallback,2.4998
+How soon must expenses be submitted?,Expense,fallback,2.4057
+Are receipts required for expense claims?,Expense,fallback,2.5147
+What approval is needed for expenses above $100?,Expense,fallback,2.3748
+Are personal purchases reimbursable?,Expense,guardrail_refusal,0.0
+Which public holidays does the company recognize?,Holidays,fallback,2.4634
+Can employees request unpaid leave for cultural or religious observances?,Holidays,fallback,2.4061
+What happens if an employee works on a holiday?,Holidays,fallback,2.4264
+Is limited personal use of company devices allowed?,Device Usage,fallback,2.3635
+What must employees do if a company device is lost or stolen?,Device Usage,fallback,2.2984
+What security rule applies to company devices when not in use?,Device Usage,fallback,2.2763
+Can employees download unauthorized software on company devices?,Device Usage,fallback,2.4505
+How often must passwords be changed under the security policy?,Security,fallback,2.4397
+How quickly must security incidents be reported?,Security,fallback,2.2254
+What access control model does the company use?,Security,guardrail_refusal,0.0
+Must sensitive data be encrypted?,Security,fallback,2.3767
+What behavior is prohibited under the code of conduct?,Conduct,fallback,2.512
+Can employees report misconduct confidentially?,Conduct,fallback,2.37
+What values are listed in the employee handbook?,Employee Handbook,fallback,2.3756
+What are the standard company work hours in the handbook?,Employee Handbook,fallback,2.3226
+Do employees have to acknowledge receipt of the handbook?,Employee Handbook,fallback,2.5

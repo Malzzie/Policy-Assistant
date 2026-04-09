@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Policy Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <div class="app-shell">
+        <header class="app-header">
+            <div>
+                <h1>Company Policy Assistant</h1>
+                <p>Ask questions about the indexed company policy documents.</p>
+            </div>
+            <div class="health-pill">Local Demo Ready</div>
+        </header>
+
+        <main class="main-layout">
+            <section class="chat-panel">
+                <div id="chat-history" class="chat-history">
+                    <div class="empty-state" id="empty-state">
+                        <h2>Start the demo</h2>
+                        <p>Ask a policy question like “How many PTO days can employees carry over?”</p>
+                    </div>
+                </div>
+
+                <form id="chat-form" class="chat-form">
+                    <label for="question" class="sr-only">Your question</label>
+                    <textarea
+                        id="question"
+                        name="question"
+                        rows="3"
+                        placeholder="Ask a company policy question..."
+                        required
+                    ></textarea>
+
+                    <div class="form-actions">
+                        <button type="submit" id="submit-btn">Ask</button>
+                    </div>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <template id="message-template">
+        <div class="message-block">
+            <div class="message user-message">
+                <div class="message-label">You</div>
+                <div class="message-text question-text"></div>
+            </div>
+
+            <div class="message assistant-message">
+                <div class="message-top-row">
+                    <div class="message-label">Assistant</div>
+                    <div class="meta-info">
+                        <span class="mode-badge"></span>
+                        <span class="latency-badge"></span>
+                    </div>
+                </div>
+
+                <div class="message-text answer-text"></div>
+
+                <div class="citations-section">
+                    <h3>Citations</h3>
+                    <div class="citations-list"></div>
+                </div>
+
+                <div class="error-box hidden"></div>
+            </div>
+        </div>
+    </template>
+
+    <script>
+        const form = document.getElementById("chat-form");
+        const questionInput = document.getElementById("question");
+        const chatHistory = document.getElementById("chat-history");
+        const emptyState = document.getElementById("empty-state");
+        const submitBtn = document.getElementById("submit-btn");
+        const template = document.getElementById("message-template");
+
+        function removeEmptyState() {
+            if (emptyState) {
+                emptyState.remove();
+            }
+        }
+
+        function createCitationCard(citation, index) {
+            const card = document.createElement("div");
+            card.className = "citation-card";
+
+            const heading = document.createElement("h4");
+            heading.textContent = `Citation ${index + 1}`;
+
+            const title = document.createElement("p");
+            title.innerHTML = `<strong>Title:</strong> ${citation.title || ""}`;
+
+            const source = document.createElement("p");
+            source.innerHTML = `<strong>Source:</strong> ${citation.source || ""}`;
+
+            const snippet = document.createElement("p");
+            snippet.innerHTML = `<strong>Snippet:</strong> ${citation.snippet || ""}`;
+
+            card.appendChild(heading);
+            card.appendChild(title);
+            card.appendChild(source);
+            card.appendChild(snippet);
+
+            return card;
+        }
+
+        function appendMessageBlock(data, isError = false) {
+            removeEmptyState();
+
+            const fragment = template.content.cloneNode(true);
+
+            const questionText = fragment.querySelector(".question-text");
+            const answerText = fragment.querySelector(".answer-text");
+            const modeBadge = fragment.querySelector(".mode-badge");
+            const latencyBadge = fragment.querySelector(".latency-badge");
+            const citationsList = fragment.querySelector(".citations-list");
+            const citationsSection = fragment.querySelector(".citations-section");
+            const errorBox = fragment.querySelector(".error-box");
+
+            questionText.textContent = data.question || "";
+
+            if (isError) {
+                answerText.textContent = "Sorry, something went wrong.";
+                modeBadge.textContent = "error";
+                latencyBadge.textContent = "";
+                citationsSection.classList.add("hidden");
+                errorBox.classList.remove("hidden");
+                errorBox.textContent = data.error || "An unexpected error occurred.";
+            } else {
+                answerText.textContent = data.answer || "";
+                modeBadge.textContent = data.mode || "unknown";
+
+                if (typeof data.latency_seconds === "number") {
+                    latencyBadge.textContent = `${data.latency_seconds}s`;
+                } else {
+                    latencyBadge.textContent = "";
+                }
+
+                const citations = data.citations || [];
+
+                if (citations.length === 0) {
+                    const emptyCitation = document.createElement("p");
+                    emptyCitation.className = "no-citations";
+                    emptyCitation.textContent = "No citations returned.";
+                    citationsList.appendChild(emptyCitation);
+                } else {
+                    citations.forEach((citation, index) => {
+                        citationsList.appendChild(createCitationCard(citation, index));
+                    });
+                }
+            }
+
+            chatHistory.appendChild(fragment);
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+        }
+
+        async function submitQuestion(question) {
+            const response = await fetch("/chat", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ question }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw data;
+            }
+
+            return data;
+        }
+
+        form.addEventListener("submit", async (event) => {
+            event.preventDefault();
+
+            const question = questionInput.value.trim();
+
+            if (!question) {
+                appendMessageBlock(
+                    {
+                        question: "",
+                        error: "Please enter a question before submitting.",
+                    },
+                    true
+                );
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Thinking...";
+
+            try {
+                const data = await submitQuestion(question);
+                appendMessageBlock(data, false);
+                questionInput.value = "";
+            } catch (error) {
+                appendMessageBlock(
+                    {
+                        question,
+                        error: error.error || "Failed to connect to the server.",
+                    },
+                    true
+                );
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = "Ask";
+            }
+        });
+    </script>
+</body>
+</html>

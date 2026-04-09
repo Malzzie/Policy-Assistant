@@ -1,0 +1,32 @@
+question,topic,gold_answer
+How many PTO days can employees carry over?,PTO,Employees may carry over up to 5 unused days into the next year.
+Who is eligible for PTO?,PTO,All full-time employees are eligible for PTO and part-time employees receive prorated PTO.
+How much PTO do employees with 0 to 2 years of service receive annually?,PTO,Employees with 0 to 2 years of service receive 15 days annually.
+How much PTO do employees with 3 to 5 years of service receive annually?,PTO,Employees with 3 to 5 years of service receive 18 days annually.
+How much PTO do employees with more than 5 years of service receive annually?,PTO,Employees with more than 5 years of service receive 22 days annually.
+How far in advance should PTO requests normally be submitted?,PTO,PTO requests should normally be submitted at least 2 weeks in advance except in emergencies.
+Who is eligible to work remotely?,Remote Work,Remote work is available to employees whose roles permit it and who have manager approval.
+What are the core hours for remote employees?,Remote Work,Remote employees must be available between 09:00 and 15:00 during core hours.
+Are weekly team meetings required for remote workers?,Remote Work,Yes weekly team meetings are mandatory.
+What security requirement applies to remote work internet access?,Remote Work,A secure internet connection is required and VPN usage is mandatory.
+What types of expenses are eligible for reimbursement?,Expense,Eligible expenses include travel meals during business travel office supplies and client-related expenses.
+How soon must expenses be submitted?,Expense,Expenses must be submitted within 14 days.
+Are receipts required for expense claims?,Expense,Yes receipts are required for all claims.
+What approval is needed for expenses above $100?,Expense,Manager approval is required for expenses above $100.
+Are personal purchases reimbursable?,Expense,No personal purchases are not reimbursable.
+Which public holidays does the company recognize?,Holidays,The company recognizes holidays such as New Year's Day Human Rights Day Freedom Day Workers' Day Youth Day Heritage Day Day of Reconciliation and Christmas Day.
+Can employees request unpaid leave for cultural or religious observances?,Holidays,Yes employees may request additional unpaid leave for cultural or religious observances.
+What happens if an employee works on a holiday?,Holidays,Employees required to work on holidays receive overtime pay or time off in lieu.
+Is limited personal use of company devices allowed?,Device Usage,Yes limited personal use is allowed if it is non-disruptive.
+What must employees do if a company device is lost or stolen?,Device Usage,Employees must report lost or stolen devices immediately.
+What security rule applies to company devices when not in use?,Device Usage,Devices must be password protected and set to automatically lock after 5 minutes of inactivity.
+Can employees download unauthorized software on company devices?,Device Usage,No downloading unauthorized software is prohibited.
+How often must passwords be changed under the security policy?,Security,Passwords must be strong and changed every 90 days.
+How quickly must security incidents be reported?,Security,All security incidents must be reported within 24 hours.
+What access control model does the company use?,Security,The company uses role-based access control.
+Must sensitive data be encrypted?,Security,Yes sensitive data must be encrypted.
+What behavior is prohibited under the code of conduct?,Conduct,Prohibited behavior includes harassment discrimination violence threats and substance abuse at work.
+Can employees report misconduct confidentially?,Conduct,Yes employees may report concerns confidentially.
+What values are listed in the employee handbook?,Employee Handbook,The handbook lists integrity innovation and collaboration as company values.
+What are the standard company work hours in the handbook?,Employee Handbook,Standard hours are 08:00 to 17:00 Monday to Friday.
+Do employees have to acknowledge receipt of the handbook?,Employee Handbook,Yes employees must acknowledge receipt of the handbook.

@@ -1,0 +1,27 @@
+EMPLOYEE SECURITY & COMPLIANCE GUIDE
+-----------------------------------
+
+Company Confidential
+
+1. Introduction
+This document outlines security and compliance expectations for all employees.
+
+2. Data Handling
+- All sensitive data must be encrypted.
+- Access must be restricted to authorized personnel only.
+
+3. Acceptable Use
+- Systems must only be used for business purposes.
+- Unauthorized access attempts are prohibited.
+
+4. Incident Response
+- Report incidents immediately.
+- Follow escalation procedures.
+
+5. Compliance
+- Adhere to GDPR and local data protection laws.
+
+6. Acknowledgment
+All employees must sign acknowledgment of this policy.
+
+End of Document

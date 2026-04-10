@@ -135,5 +135,6 @@ Outputs:
 
 ## Demo
 
-GitHub Repo: <insert link>  
-Demo Video: <insert link>
+GitHub Repo: https://github.com/Malzzie/Policy-Assistant 
+
+Demo Video: https://drive.google.com/drive/folders/1O3vlygs63QGDTeyuc6ngMGCafimtuN-Z?usp=drive_link
